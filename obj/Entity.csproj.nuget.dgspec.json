@@ -42,6 +42,14 @@
               "target": "Package",
               "version": "[7.0.1, )"
             },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational.Design": {
+              "target": "Package",
+              "version": "[2.0.0-preview1-final, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.1, )"
@@ -56,13 +64,9 @@
               "target": "Package",
               "version": "[7.0.1, )"
             },
-            "MySql.Data": {
-              "target": "Package",
-              "version": "[8.0.31, )"
-            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[7.0.0-silver.1, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

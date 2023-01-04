@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entity.Models;
 
-[Table("marca")]
+[Table("marcas")]
 public class Marca
 {
     [Key]
