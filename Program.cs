@@ -1,7 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<BaseContext>(options =>
+{
+    var conexao = Environment.GetEnvironmentVariable("DATABASE_CDF");
+    if(conexao == null) conexao = "Server=localhost;Database=ford;Uid=root;Pwd=broot;";
+    options.UseMySql(conexao, ServerVersion.AutoDetect(conexao));
+});
 
 var app = builder.Build();
 

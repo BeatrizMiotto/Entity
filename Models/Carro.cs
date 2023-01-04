@@ -1,23 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace entity.Models;
+namespace Entity.Models;
 
 [Table("carro")]
-public record Carro
+public class Carro
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get;set; }
+    public int Id {get; set;}
 
-    [Required(ErrorMessage = "Nome é obrigatório")]
-    //[MaxLength(100)]
     [Column("nome", TypeName = "varchar(100)")]
-    public string Nome { get;set; } = default!;
+    public string? Nome {get; set;}
 
     [Column("marca", TypeName = "varchar(100)")]
-    public string Marca { get;set; } = default!;
-    
+    public string? Marca {get; set;}
+
     [Column("modelo", TypeName = "varchar(100)")]
-    public string Modelo { get;set; } = default!;
+    public string? Modelo {get; set;}
 }

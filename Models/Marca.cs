@@ -1,17 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace entity.Models;
+namespace Entity.Models;
 
 [Table("marca")]
-public record Marca
+public class Marca
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get;set; }
+    public int Id {get; set;}
 
-    [Required(ErrorMessage = "Nome é obrigatório")]
-    //[MaxLength(100)]
-    [Column("nome", TypeName = "varchar(100)")]
-    public string Nome { get;set; } = default!;
+     [Column("nome", TypeName = "varchar(100)")]
+    public string? Nome {get; set;}
 }
