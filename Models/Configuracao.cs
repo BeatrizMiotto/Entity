@@ -10,6 +10,6 @@ public class Configuracao
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id {get; set;}
 
-    [Column("dias_de_locacao", TypeName = "varchar(10)")]
-    public string? DiasDeLocacao {get; set;}
+    [Column("dias_de_locacao", TypeName = "date")]
+    public DateTime DiasDeLocacao {get; set;}
 }

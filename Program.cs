@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BaseContext>(options =>
 {
     var conexao = Environment.GetEnvironmentVariable("DATABASE_CDF");
-    if(conexao == null) conexao = "Server=localhost;Database=ford;Uid=root;Pwd=broot;";
+    if(conexao == null) conexao = "Server=localhost;Database=ford;Uid=root;Pwd= ;";
     options.UseMySql(conexao, ServerVersion.Parse("8.0.26"));
 });
 

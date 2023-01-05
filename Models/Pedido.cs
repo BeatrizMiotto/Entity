@@ -10,15 +10,15 @@ public class Pedido
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id {get; set;}
 
-    [Column("id_cliente", TypeName = "INTEGER(100)")]
+    [Column("id_cliente", TypeName = "integer not null")]
     public int IdCliente {get; set;}
 
-    [Column("carro", TypeName = "varchar(100)")]
+    [Column("id_carro", TypeName = "integer not null")]
     public string? Carro {get; set;}
 
-    [Column("data_locacao", TypeName = "varchar(100)")]
-    public string? DataLocacao {get; set;}
+    [Column("data_locacao", TypeName = "date")]
+    public DateTime DataLocacao {get; set;}
 
-    [Column("data_entrega", TypeName = "varchar(100)")]
-    public string? DataEntrega {get; set;}
+    [Column("data_entrega", TypeName = "date")]
+    public DateTime DataEntrega {get; set;}
 }
