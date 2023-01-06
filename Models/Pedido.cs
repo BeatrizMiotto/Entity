@@ -14,7 +14,7 @@ public class Pedido
     public int IdCliente {get; set;}
 
     [Column("id_carro", TypeName = "integer not null")]
-    public string? Carro {get; set;}
+    public int Carro {get; set;}
 
     [Column("data_locacao", TypeName = "date")]
     public DateTime DataLocacao {get; set;}
