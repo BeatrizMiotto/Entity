@@ -56,7 +56,7 @@ namespace Entity.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Marca,Modelo")] Carro carro)
+        public async Task<IActionResult> Create([Bind("Id,Marca,Modelo")] Carro carro)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Entity.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Marca,Modelo")] Carro carro)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Marca,Modelo")] Carro carro)
         {
             if (id != carro.Id)
             {

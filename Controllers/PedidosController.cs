@@ -56,7 +56,7 @@ namespace Entity.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdCliente,Carro,DataLocacao,DataEntrega")] Pedido pedido)
+        public async Task<IActionResult> Create([Bind("Id,IdCliente,IdCarro,DataLocacao,DataEntrega,DiasDeLocacao")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Entity.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdCliente,Carro,DataLocacao,DataEntrega")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdCliente,IdCarro,DataLocacao,DataEntrega,DiasDeLocacao")] Pedido pedido)
         {
             if (id != pedido.Id)
             {

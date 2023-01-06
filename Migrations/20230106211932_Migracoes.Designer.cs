@@ -11,8 +11,8 @@ using entity.Database;
 namespace Entity.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    [Migration("20230105211418_MeuNovoCampoCarros")]
-    partial class MeuNovoCampoCarros
+    [Migration("20230106211932_Migracoes")]
+    partial class Migracoes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,15 +28,18 @@ namespace Entity.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Marca")
-                        .HasColumnType("integer not null")
-                        .HasColumnName("id_marca");
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("marca");
 
-                    b.Property<int>("Modelo")
-                        .HasColumnType("integer not null")
-                        .HasColumnName("id_modelo");
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("modelo");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nome");
 
@@ -52,7 +55,8 @@ namespace Entity.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(50)")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("email");
 
                     b.Property<string>("Endereco")
@@ -65,57 +69,12 @@ namespace Entity.Migrations
                         .HasColumnName("nome");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("varchar(11)")
+                        .HasColumnType("varchar(15)")
                         .HasColumnName("telefone");
 
                     b.HasKey("Id");
 
                     b.ToTable("clientes");
-                });
-
-            modelBuilder.Entity("Entity.Models.Configuracao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DiasDeLocacao")
-                        .HasColumnType("date")
-                        .HasColumnName("dias_de_locacao");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("configuracoes");
-                });
-
-            modelBuilder.Entity("Entity.Models.Marca", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("nome");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("marcas");
-                });
-
-            modelBuilder.Entity("Entity.Models.Modelo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("nome");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("modelos");
                 });
 
             modelBuilder.Entity("Entity.Models.Pedido", b =>
@@ -124,25 +83,61 @@ namespace Entity.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Carro")
-                        .HasColumnType("integer not null")
-                        .HasColumnName("id_carro");
-
                     b.Property<DateTime>("DataEntrega")
-                        .HasColumnType("date")
+                        .HasColumnType("datetime")
                         .HasColumnName("data_entrega");
 
                     b.Property<DateTime>("DataLocacao")
-                        .HasColumnType("date")
+                        .HasColumnType("datetime")
                         .HasColumnName("data_locacao");
 
+                    b.Property<int>("DiasDeLocacao")
+                        .HasColumnType("integer")
+                        .HasColumnName("dias_de_locacao");
+
+                    b.Property<int>("IdCarro")
+                        .HasColumnType("integer")
+                        .HasColumnName("id_carro");
+
                     b.Property<int>("IdCliente")
-                        .HasColumnType("integer not null")
+                        .HasColumnType("integer")
                         .HasColumnName("id_cliente");
+
+                    b.Property<int?>("id_carro")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("id_cliente")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("pedidos");
+                    b.HasIndex("id_carro");
+
+                    b.HasIndex("id_cliente");
+
+                    b.ToTable("pedidos", t =>
+                        {
+                            t.Property("id_carro")
+                                .HasColumnName("id_carro1");
+
+                            t.Property("id_cliente")
+                                .HasColumnName("id_cliente1");
+                        });
+                });
+
+            modelBuilder.Entity("Entity.Models.Pedido", b =>
+                {
+                    b.HasOne("Entity.Models.Carro", "Carro")
+                        .WithMany()
+                        .HasForeignKey("id_carro");
+
+                    b.HasOne("Entity.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("id_cliente");
+
+                    b.Navigation("Carro");
+
+                    b.Navigation("Cliente");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,12 +10,10 @@ public class Carro
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id {get; set;}
 
-    [Column("nome", TypeName = "varchar(100)")]
-    public string? Nome {get; set;}
+    [Column("marca", TypeName = "varchar(100)")]
+    public string Marca {get; set;} = default!;
 
-    [Column("id_marca", TypeName = "integer not null")]
-    public int Marca {get; set;}
+    [Column("modelo", TypeName = "varchar(100)")]
+    public string Modelo {get; set;} = default!;
 
-    [Column("id_modelo", TypeName = "integer not null")]
-    public int Modelo {get; set;}
 }

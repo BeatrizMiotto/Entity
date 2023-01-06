@@ -10,15 +10,24 @@ public class Pedido
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id {get; set;}
 
-    [Column("id_cliente", TypeName = "integer not null")]
+    [Column("id_cliente", TypeName = "integer")]
     public int IdCliente {get; set;}
 
-    [Column("id_carro", TypeName = "integer not null")]
-    public int Carro {get; set;}
+    [ForeignKey("id_cliente")]
+    public Cliente? Cliente {get; set;}
 
-    [Column("data_locacao", TypeName = "date")]
-    public DateTime DataLocacao {get; set;}
+    [Column("id_carro", TypeName = "integer")]
+    public int IdCarro {get; set;}
 
-    [Column("data_entrega", TypeName = "date")]
-    public DateTime DataEntrega {get; set;}
+    [ForeignKey("id_carro")]
+    public Carro? Carro {get; set;}
+
+    [Column("data_locacao", TypeName = "datetime")]
+    public DateTime DataLocacao {get; set;} = default!;
+
+    [Column("data_entrega", TypeName = "datetime")]
+    public DateTime DataEntrega {get; set;} = default!;
+
+    [Column("dias_de_locacao", TypeName = "integer")]
+    public int DiasDeLocacao {get; set;} = default!;
 }

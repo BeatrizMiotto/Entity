@@ -4,14 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Clientes</h1>
-<hr>
-<br>
+<h1>Index</h1>
+
 <p>
-    <a href="Clientes/Create" class="btn btn-info text-white">Novo Cliente</a>
-    <!--<a asp-action="Create" class="btn btn-info text-white">Novo Cliente</a>-->
+    <a asp-action="Create">Create New</a>
 </p>
-<hr>
 <table class="table">
     <thead>
         <tr>
@@ -46,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Endereco)
             </td>
             <td>
-                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a class="btn btn-warning text-white" asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

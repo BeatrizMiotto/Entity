@@ -8,16 +8,15 @@ public class Cliente
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id {get; set;}
+    public int Id {get; set;} = default!;
 
-    [Required(ErrorMessage = "Nome é obrigatório")]
     [Column("nome", TypeName = "varchar(100)")]
-    public string? Nome {get; set;}
+    public string Nome {get; set;} = default!;
 
-    [Column("email", TypeName = "varchar(50)")]
-    public string? Email {get; set;}
+    [Column("email", TypeName = "varchar(100)")]
+    public string Email {get; set;} = default!;
 
-    [Column("telefone", TypeName = "varchar(11)")]
+    [Column("telefone", TypeName = "varchar(15)")]
     public string? Telefone {get; set;}
 
     [Column("endereco", TypeName = "varchar(100)")]
