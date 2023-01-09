@@ -22,6 +22,33 @@ namespace Entity.Controllers
         // GET: Pedidos
         public async Task<IActionResult> Index()
         {
+            var pedidos =  _context.Pedidos.Join(
+                _context.Clientes,
+                ped => ped.IdCliente,
+                cli => cli.Id,
+                (ped, cli) => new {
+                    PedidoId = ped.Id,
+                    NomeCliente = cli.Nome,
+                    idCarro = ped.IdCarro
+                }
+
+            ).Join(
+                _context.Carros,
+                pedCli => pedCli.idCarro,
+                carro => carro.Id,
+                (pedCli, carro) => new {
+                    PedidoId = pedCli.PedidoId,
+                    NomeCliente = pedCli.NomeCliente,
+                    NomeCarro = carro.Marca
+
+                }
+            ).ToQueryString();
+
+            Console.WriteLine("###########################[");
+
+            Console.WriteLine(pedidos);
+
+            Console.WriteLine("]###########################");
               return _context.Pedidos != null ? 
                           View(await _context.Pedidos.ToListAsync()) :
                           Problem("Entity set 'BaseContext.Pedidos'  is null.");
